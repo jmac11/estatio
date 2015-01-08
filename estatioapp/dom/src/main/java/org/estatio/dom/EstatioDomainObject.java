@@ -19,6 +19,7 @@
 package org.estatio.dom;
 
 import javax.jdo.JDOHelper;
+import javax.jdo.annotations.InheritanceStrategy;
 import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.isisaddons.module.security.dom.tenancy.WithApplicationTenancy;
 import org.apache.isis.applib.annotation.Hidden;
@@ -48,7 +49,9 @@ import org.apache.isis.applib.annotation.Hidden;
  * will end up putting a <tt>version</tt> column in both tables, and they are not 
  * kept in sync).
  */
-public abstract class EstatioDomainObject<T extends UdoDomainObject<T>> 
+@javax.jdo.annotations.PersistenceCapable
+@javax.jdo.annotations.Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
+public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
         extends UdoDomainObject<T> implements WithApplicationTenancy {
 
 
