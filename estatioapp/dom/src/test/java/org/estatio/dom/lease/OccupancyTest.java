@@ -19,6 +19,7 @@
 package org.estatio.dom.lease;
 
 import java.util.List;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.auto.Mock;
 import org.joda.time.LocalDate;
 import org.junit.Before;
@@ -840,6 +841,7 @@ public class OccupancyTest {
                     .withFixture(pojos(Sector.class))
                     .withFixture(pojos(Activity.class))
                     .withFixture(pojos(Brand.class))
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(new Occupancy(),
                             PojoTester.FilterSet.excluding("unitSizeName", "sectorName", "activityName", "brandName"));
         }

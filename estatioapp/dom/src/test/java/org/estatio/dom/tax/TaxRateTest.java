@@ -19,6 +19,7 @@
 package org.estatio.dom.tax;
 
 import java.util.List;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.joda.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,6 +43,7 @@ public class TaxRateTest {
             newPojoTester()
                     .withFixture(pojos(Tax.class))
                     .withFixture(pojos(TaxRate.class))
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(new TaxRate());
         }
     }

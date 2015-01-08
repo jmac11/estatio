@@ -19,7 +19,8 @@
 package org.estatio.dom;
 
 import javax.jdo.JDOHelper;
-
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
+import org.isisaddons.module.security.dom.tenancy.WithApplicationTenancy;
 import org.apache.isis.applib.annotation.Hidden;
 
 /**
@@ -48,7 +49,7 @@ import org.apache.isis.applib.annotation.Hidden;
  * kept in sync).
  */
 public abstract class EstatioDomainObject<T extends UdoDomainObject<T>> 
-        extends UdoDomainObject<T> {
+        extends UdoDomainObject<T> implements WithApplicationTenancy {
 
 
     public EstatioDomainObject(
@@ -66,8 +67,21 @@ public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
         final String id = objectIdStr.split("\\[OID\\]")[0];
         return id;
     }
-    
-    
+
+
+    // //////////////////////////////////////
+
+    private ApplicationTenancy applicationTenancy;
+
+    @javax.jdo.annotations.Column(allowsNull="false")
+    public ApplicationTenancy getApplicationTenancy() {
+        return applicationTenancy;
+    }
+
+    public void setApplicationTenancy(final ApplicationTenancy applicationTenancy) {
+        this.applicationTenancy = applicationTenancy;
+    }
+
     // //////////////////////////////////////
 
     @Hidden

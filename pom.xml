@@ -114,6 +114,7 @@ language governing permissions and limitations under the License.
 
         <clover.version>3.1.12</clover.version>
         <maven.clover.licenseLocation>${siteBaseDir}/codequality/clover.license</maven.clover.licenseLocation>
+        <isis-module-security-dom.version>1.8.0-SNAPSHOT</isis-module-security-dom.version>
     </properties>
 
     <repositories>
@@ -543,6 +544,12 @@ language governing permissions and limitations under the License.
                 <artifactId>isis-module-devutils-dom</artifactId>
                 <version>${isis-module-devutils.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.isisaddons.module.security</groupId>
+                <artifactId>isis-module-security-dom</artifactId>
+                <version>${isis-module-security-dom.version}</version>
+            </dependency>
+
 
             <!-- UDO modules -->
             

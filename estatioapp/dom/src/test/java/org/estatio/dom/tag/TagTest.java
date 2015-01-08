@@ -19,6 +19,7 @@
 package org.estatio.dom.tag;
 
 import java.util.List;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +38,7 @@ public class TagTest {
                     .withFixture(Taggable.class, new Taggable() {
                     }, new Taggable() {
                     })
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(new Tag());
         }
 

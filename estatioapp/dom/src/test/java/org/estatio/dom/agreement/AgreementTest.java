@@ -24,6 +24,7 @@ import com.google.common.collect.Lists;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.Expectations;
 import org.jmock.Sequence;
 import org.jmock.auto.Mock;
@@ -63,6 +64,7 @@ public class AgreementTest {
             newPojoTester()
                     .withFixture(pojos(Agreement.class, AgreementForTesting.class))
                     .withFixture(pojos(AgreementType.class))
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(agreement);
         }
     }

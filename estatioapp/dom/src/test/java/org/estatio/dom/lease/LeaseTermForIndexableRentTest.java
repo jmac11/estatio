@@ -19,6 +19,7 @@
 package org.estatio.dom.lease;
 
 import java.math.BigDecimal;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
 import org.joda.time.LocalDate;
@@ -224,6 +225,7 @@ public class LeaseTermForIndexableRentTest {
                     .withFixture(pojos(LeaseTerm.class, LeaseTermForTesting.class))
                     .withFixture(pojos(Index.class))
                     .withFixture(statii())
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(new LeaseTermForIndexable());
         }
 

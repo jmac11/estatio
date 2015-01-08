@@ -35,6 +35,7 @@ import com.google.common.collect.Lists;
 
 import org.hamcrest.Matchers;
 import org.hamcrest.core.Is;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
 import org.joda.time.LocalDate;
@@ -130,6 +131,7 @@ public class LeaseTest {
                     .withFixture(pojos(LeaseType.class))
                     .withFixture(pojos(BankMandate.class))
                     .withFixture(statii())
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(new Lease());
         }
 

@@ -18,22 +18,27 @@
  */
 package org.estatio.dom.asset.registration;
 
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
+import org.junit.Test;
 import org.estatio.dom.AbstractBeanPropertiesTest;
 import org.estatio.dom.asset.FixedAsset;
 import org.estatio.dom.asset.FixedAssetForTesting;
 import org.estatio.dom.asset.registration.contributed.FixedAssetRegistrationForTesting;
-import org.junit.Test;
 
-public class LandRegisterTest_beanProperties extends AbstractBeanPropertiesTest {
+public class LandRegisterTest extends AbstractBeanPropertiesTest {
 
-    @Test
-    public void test() {
-        final LandRegister pojo = new LandRegister();
-        newPojoTester()
-                .withFixture(pojos(FixedAsset.class, FixedAssetForTesting.class))
-                .withFixture(pojos(FixedAssetRegistration.class, FixedAssetRegistrationForTesting.class))
-                .withFixture(pojos(FixedAssetRegistrationType.class))
-                .exercise(pojo);
+    public static class BeanProperties extends LandRegisterTest {
+
+        @Test
+        public void test() {
+            final LandRegister pojo = new LandRegister();
+            newPojoTester()
+                    .withFixture(pojos(FixedAsset.class, FixedAssetForTesting.class))
+                    .withFixture(pojos(FixedAssetRegistration.class, FixedAssetRegistrationForTesting.class))
+                    .withFixture(pojos(FixedAssetRegistrationType.class))
+                    .withFixture(pojos(ApplicationTenancy.class))
+                    .exercise(pojo);
+        }
     }
 
 }

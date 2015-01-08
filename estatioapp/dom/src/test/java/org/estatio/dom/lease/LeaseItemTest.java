@@ -22,6 +22,7 @@ package org.estatio.dom.lease;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
 import org.joda.time.LocalDate;
@@ -198,6 +199,7 @@ public class LeaseItemTest {
                     .withFixture(pojos(Lease.class))
                     .withFixture(statii())
                     .withFixture(pojos(Tax.class))
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(new LeaseItem());
         }
 

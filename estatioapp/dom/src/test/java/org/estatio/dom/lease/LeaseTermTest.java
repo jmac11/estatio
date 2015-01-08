@@ -23,6 +23,7 @@ import java.math.BigInteger;
 import java.util.List;
 import org.hamcrest.Description;
 import org.hamcrest.core.Is;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.Expectations;
 import org.jmock.api.Action;
 import org.jmock.api.Invocation;
@@ -274,6 +275,7 @@ public class LeaseTermTest {
                     .withFixture(pojos(LeaseItem.class))
                     .withFixture(pojos(LeaseTerm.class, LeaseTermForTesting.class))
                     .withFixture(statii())
+                    .withFixture(pojos(ApplicationTenancy.class))
                     .exercise(new LeaseTermForTesting());
         }
 
