@@ -649,12 +649,12 @@ language governing permissions and limitations under the License.
 
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>estatio-dom-invoice</artifactId>
+                <artifactId>udo-dom-invoice</artifactId>
                 <version>1.2.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>estatio-dom-invoice</artifactId>
+                <artifactId>udo-dom-invoice</artifactId>
                 <version>1.2.0-SNAPSHOT</version>
                 <scope>test</scope>
                 <type>test-jar</type>
@@ -1095,6 +1095,7 @@ language governing permissions and limitations under the License.
                 <module>udo/currency/dom</module>
                 <module>udo/event/dom</module>
                 <module>udo/geography/dom</module>
+                <module>udo/invoice/dom</module>
                 <module>udo/numerator/dom</module>
                 <module>udo/party/dom</module>
                 <module>udo/tag/dom</module>
@@ -1118,6 +1119,7 @@ language governing permissions and limitations under the License.
                 <module>udo/currency/dom</module>
                 <module>udo/event/dom</module>
                 <module>udo/geography/dom</module>
+                <module>udo/invoice/dom</module>
                 <module>udo/numerator/dom</module>
                 <module>udo/party/dom</module>
                 <module>udo/tag/dom</module>
@@ -1138,6 +1140,7 @@ language governing permissions and limitations under the License.
                 <module>udo/currency/dom</module>
                 <module>udo/event/dom</module>
                 <module>udo/geography/dom</module>
+                <module>udo/invoice/dom</module>
                 <module>udo/numerator/dom</module>
                 <module>udo/party/dom</module>
                 <module>udo/tag/dom</module>

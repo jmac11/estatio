@@ -76,7 +76,7 @@ public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
 
     private ApplicationTenancy applicationTenancy;
 
-    @javax.jdo.annotations.Column(allowsNull="false")
+    @javax.jdo.annotations.Column(allowsNull="true")
     public ApplicationTenancy getApplicationTenancy() {
         return applicationTenancy;
     }
