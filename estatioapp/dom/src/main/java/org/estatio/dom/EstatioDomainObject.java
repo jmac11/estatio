@@ -18,12 +18,24 @@
  */
 package org.estatio.dom;
 
+import java.util.List;
 import javax.jdo.JDOHelper;
 import javax.jdo.annotations.InheritanceStrategy;
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 import org.isisaddons.module.security.dom.tenancy.ApplicationTenancies;
 import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
+import org.apache.isis.applib.Identifier;
+import org.apache.isis.applib.annotation.ActionInteraction;
+import org.apache.isis.applib.annotation.ActionLayout;
+import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.PropertyLayout;
+import org.apache.isis.applib.services.eventbus.ActionInteractionEvent;
+import org.estatio.dom.valuetypes.Hierarchy;
 
 /**
  * A domain object that is mutable and can be changed by multiple users over
@@ -53,7 +65,7 @@ import org.apache.isis.applib.annotation.PropertyLayout;
  */
 @javax.jdo.annotations.PersistenceCapable
 @javax.jdo.annotations.Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
-public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
+public abstract class EstatioDomainObject<T extends EstatioDomainObject<T>>
         extends UdoDomainObject<T> {
 
     public static final String ROOT_APPLICATION_TENANCY_PATH = "/";
@@ -110,6 +122,79 @@ public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
     public ApplicationTenancy getApplicationTenancy() {
         return applicationTenancies.findTenancyByPath(getApplicationTenancyPath());
     }
+
+    // //////////////////////////////////////
+
+    public static class ApplicationTenancyChangedEvent extends ActionInteractionEvent<EstatioDomainObject> {
+        public ApplicationTenancyChangedEvent(final EstatioDomainObject source, final Identifier identifier, final Object... arguments) {
+            super(source, identifier, arguments);
+        }
+    }
+
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @ActionInteraction(value = ApplicationTenancyChangedEvent.class)
+    @ActionLayout(
+            named = "Move down",
+            cssClassFa = "fa-angle-double-down"
+    )
+    @MemberOrder(name = "applicationTenancy", sequence = "1")
+    public T moveDownApplicationTenancy(
+            @ParameterLayout(named = "Down to")
+            final ApplicationTenancy newApplicationTenancy) {
+        setApplicationTenancyPath(newApplicationTenancy.getPath());
+        return (T)this;
+    }
+
+    public List<ApplicationTenancy> choices0MoveDownApplicationTenancy() {
+        final List<ApplicationTenancy> all = applicationTenancies.allTenancies();
+        final ApplicationTenancy current = getApplicationTenancy();
+        final Hierarchy currentLevel = Hierarchy.of(current.getPath());
+        return Lists.newArrayList(Iterables.filter(all, childrenOf(currentLevel)));
+    }
+
+    private final Predicate<ApplicationTenancy> childrenOf(final Hierarchy level) {
+        return new Predicate<ApplicationTenancy>() {
+            @Override
+            public boolean apply(final ApplicationTenancy input) {
+                final Hierarchy candidate = Hierarchy.of(input.getPath());
+                return candidate.childOf(level);
+            }
+        };
+    }
+
+
+    // //////////////////////////////////////
+    @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
+    @ActionInteraction(value = ApplicationTenancyChangedEvent.class)
+    @ActionLayout(
+            named = "Move up",
+            cssClassFa = "fa-angle-double-up"
+    )
+    @MemberOrder(name = "applicationTenancy", sequence = "2")
+    public T moveUpApplicationTenancy(
+            @ParameterLayout(named = "Up to")
+            final ApplicationTenancy newApplicationTenancy) {
+        setApplicationTenancyPath(newApplicationTenancy.getPath());
+        return (T)this;
+    }
+
+    public List<ApplicationTenancy> choices0MoveUpApplicationTenancy() {
+        final List<ApplicationTenancy> all = applicationTenancies.allTenancies();
+        final ApplicationTenancy current = getApplicationTenancy();
+        final Hierarchy currentLevel = Hierarchy.of(current.getPath());
+        return Lists.newArrayList(Iterables.filter(all, parentsOf(currentLevel)));
+    }
+
+    private final Predicate<ApplicationTenancy> parentsOf(final Hierarchy level) {
+        return new Predicate<ApplicationTenancy>() {
+            @Override
+            public boolean apply(final ApplicationTenancy input) {
+                final Hierarchy candidate = Hierarchy.of(input.getPath());
+                return candidate.parentOf(level);
+            }
+        };
+    }
+
 
     // //////////////////////////////////////
 
