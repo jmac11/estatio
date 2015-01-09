@@ -18,17 +18,49 @@
  */
 package org.estatio.dom;
 
+import javax.jdo.JDOHelper;
+import javax.jdo.annotations.InheritanceStrategy;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
+import org.isisaddons.module.security.dom.tenancy.WithApplicationTenancy;
 import org.apache.isis.applib.AbstractDomainObject;
+import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.services.eventbus.EventBusService;
 import org.apache.isis.applib.util.ObjectContracts;
-
 import org.estatio.services.clock.ClockService;
 
-public abstract class UdoDomainObject<T extends UdoDomainObject<T>> 
-        extends AbstractDomainObject 
-        implements Comparable<T> {
 
-    private static ObjectContracts ESTATIO_OBJECT_CONTRACTS = 
+/**
+ * A domain object that is mutable and can be changed by multiple users over time,
+ * and should therefore have optimistic locking controls in place.
+ *
+ * <p>
+ * Subclasses must be annotated with:
+ * <pre>
+ * @javax.jdo.annotations.DatastoreIdentity(
+ *     strategy = IdGeneratorStrategy.NATIVE,
+ *     column = "id")
+ * @javax.jdo.annotations.Version(
+ *     strategy=VersionStrategy.VERSION_NUMBER,
+ *     column="version")
+ * public class MyDomainObject extends UdoDomainObject {
+ *   ...
+ * }
+ * </pre>
+ *
+ * <p>
+ * Note however that if a subclass that has a supertype which is annotated
+ * with {@link javax.jdo.annotations.Version} (eg <tt>CommunicationChannel</tt>)
+ * then the subtype must not also have a <tt>Version</tt> annotation (otherwise JDO
+ * will end up putting a <tt>version</tt> column in both tables, and they are not
+ * kept in sync).
+ */
+@javax.jdo.annotations.PersistenceCapable
+@javax.jdo.annotations.Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
+public abstract class UdoDomainObject<T extends UdoDomainObject<T>>
+        extends AbstractDomainObject 
+        implements Comparable<T>, WithApplicationTenancy {
+
+    private static ObjectContracts UDO_OBJECT_CONTRACTS =
             new ObjectContracts()
     .with(WithReferenceGetter.ToString.evaluator())
                 .with(WithCodeGetter.ToString.evaluator())
@@ -48,7 +80,43 @@ public abstract class UdoDomainObject<T extends UdoDomainObject<T>>
     }
 
     // //////////////////////////////////////
-    
+
+    @Hidden
+    public String getId() {
+        Object objectId = JDOHelper.getObjectId(this);
+        if(objectId == null) {
+            return "";
+        }
+        String objectIdStr = objectId.toString();
+        final String id = objectIdStr.split("\\[OID\\]")[0];
+        return id;
+    }
+
+
+    // //////////////////////////////////////
+
+
+    @Hidden
+    public Long getVersionSequence() {
+        final Long version = (Long) JDOHelper.getVersion(this);
+        return version;
+    }
+
+
+    // //////////////////////////////////////
+    private ApplicationTenancy applicationTenancy;
+
+    @javax.jdo.annotations.Column(allowsNull="true")
+    public ApplicationTenancy getApplicationTenancy() {
+        return applicationTenancy;
+    }
+
+    public void setApplicationTenancy(final ApplicationTenancy applicationTenancy) {
+        this.applicationTenancy = applicationTenancy;
+    }
+
+    // //////////////////////////////////////
+
     private ClockService clockService;
     protected ClockService getClockService() {
         return clockService;
@@ -78,7 +146,7 @@ public abstract class UdoDomainObject<T extends UdoDomainObject<T>>
 
     @Override
     public String toString() {
-        return ESTATIO_OBJECT_CONTRACTS.toStringOf(this, keyProperties());
+        return UDO_OBJECT_CONTRACTS.toStringOf(this, keyProperties());
     }
 
     @Override

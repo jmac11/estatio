@@ -22,16 +22,13 @@ import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-
 import com.google.common.base.Function;
-
 import org.apache.isis.applib.annotation.Disabled;
 import org.apache.isis.applib.annotation.Immutable;
 import org.apache.isis.applib.annotation.Mandatory;
 import org.apache.isis.applib.annotation.Title;
-
-import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.WithNameGetter;
 
 /**
@@ -58,7 +55,7 @@ import org.estatio.dom.WithNameGetter;
 })
 @Immutable
 public class Tag 
-        extends EstatioDomainObject<Tag> 
+        extends UdoDomainObject<Tag>
         implements WithNameGetter {
 
     public Tag() {

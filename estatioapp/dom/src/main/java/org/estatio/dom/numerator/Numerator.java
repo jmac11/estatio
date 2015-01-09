@@ -19,11 +19,9 @@
 package org.estatio.dom.numerator;
 
 import java.math.BigInteger;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-
 import org.apache.isis.applib.annotation.Disabled;
 import org.apache.isis.applib.annotation.Immutable;
 import org.apache.isis.applib.annotation.Named;
@@ -31,9 +29,8 @@ import org.apache.isis.applib.annotation.NotPersisted;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.services.bookmark.Bookmark;
 import org.apache.isis.applib.services.bookmark.BookmarkHolder;
-
-import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
+import org.estatio.dom.UdoDomainObject;
 
 /**
  * Generates a sequence of values (eg <tt>XYZ-00101</tt>, <tt>XYZ-00102</tt>,
@@ -74,7 +71,7 @@ import org.estatio.dom.JdoColumnLength;
 })
 @Immutable
 public class Numerator
-        extends EstatioDomainObject<Numerator>
+        extends UdoDomainObject<Numerator>
         implements Comparable<Numerator>, BookmarkHolder {
 
     public Numerator() {

@@ -21,13 +21,10 @@ package org.estatio.dom.tax;
 import java.math.BigDecimal;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-
 import org.joda.time.LocalDate;
-
 import org.apache.isis.applib.annotation.Bounded;
 import org.apache.isis.applib.annotation.Immutable;
 import org.apache.isis.applib.annotation.MultiLine;
@@ -38,10 +35,9 @@ import org.apache.isis.applib.annotation.RegEx;
 import org.apache.isis.applib.annotation.Render;
 import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
-
-import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.RegexValidation;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.WithNameGetter;
 import org.estatio.dom.WithReferenceComparable;
 import org.estatio.dom.WithReferenceUnique;
@@ -67,7 +63,7 @@ import org.estatio.dom.WithReferenceUnique;
 @Bounded
 @Immutable
 public class Tax
-        extends EstatioDomainObject<Tax>
+        extends UdoDomainObject<Tax>
         implements WithReferenceComparable<Tax>, WithNameGetter, WithReferenceUnique {
 
     public Tax() {

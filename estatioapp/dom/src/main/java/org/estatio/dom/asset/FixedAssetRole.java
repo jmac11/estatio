@@ -19,15 +19,11 @@
 package org.estatio.dom.asset;
 
 import java.util.SortedSet;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-
 import com.google.common.base.Function;
-
 import org.joda.time.LocalDate;
-
 import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -41,9 +37,8 @@ import org.apache.isis.applib.annotation.Render;
 import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
-
-import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.WithIntervalContiguous;
 import org.estatio.dom.party.Party;
 import org.estatio.dom.valuetypes.LocalDateInterval;
@@ -103,7 +98,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
 })
 @Bookmarkable(BookmarkPolicy.AS_CHILD)
 public class FixedAssetRole
-        extends EstatioDomainObject<FixedAssetRole>
+        extends UdoDomainObject<FixedAssetRole>
         implements WithIntervalContiguous<FixedAssetRole> {
 
     private WithIntervalContiguous.Helper<FixedAssetRole> helper =

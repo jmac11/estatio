@@ -21,20 +21,16 @@ package org.estatio.dom.agreement;
 import java.util.List;
 import java.util.SortedSet;
 import java.util.TreeSet;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.Unique;
 import javax.jdo.annotations.VersionStrategy;
-
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
 import org.joda.time.LocalDate;
-
 import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.annotation.BookmarkPolicy;
@@ -49,9 +45,8 @@ import org.apache.isis.applib.annotation.Render;
 import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
-
-import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.WithIntervalContiguous;
 import org.estatio.dom.communicationchannel.CommunicationChannel;
 import org.estatio.dom.communicationchannel.CommunicationChannelContributions;
@@ -103,7 +98,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
         members = { "agreement", "party", "type", "startDate" })
 @Bookmarkable(BookmarkPolicy.AS_CHILD)
 @Immutable
-public class AgreementRole extends EstatioDomainObject<AgreementRole>
+public class AgreementRole extends UdoDomainObject<AgreementRole>
         implements WithIntervalContiguous<AgreementRole> {
 
     private final WithIntervalContiguous.Helper<AgreementRole> helper =

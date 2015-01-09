@@ -37,7 +37,7 @@ import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 
-import org.estatio.dom.EstatioDomainObject;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.WithIntervalMutable;
 import org.estatio.dom.asset.Unit;
@@ -92,7 +92,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
                         + "&& startDate == :startDate")
 })
 public class Occupancy
-        extends EstatioDomainObject<Occupancy>
+        extends UdoDomainObject<Occupancy>
         implements WithIntervalMutable<Occupancy>, Taggable {
 
     public Occupancy() {

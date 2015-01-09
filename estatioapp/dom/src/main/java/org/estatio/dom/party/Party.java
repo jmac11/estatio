@@ -20,12 +20,10 @@ package org.estatio.dom.party;
 
 import java.util.SortedSet;
 import java.util.TreeSet;
-
 import javax.jdo.annotations.DiscriminatorStrategy;
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.VersionStrategy;
-
 import org.apache.isis.applib.Identifier;
 import org.apache.isis.applib.annotation.ActionInteraction;
 import org.apache.isis.applib.annotation.AutoComplete;
@@ -38,11 +36,10 @@ import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.RegEx;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.services.eventbus.ActionInteractionEvent;
-
 import org.estatio.app.security.EstatioRole;
-import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.RegexValidation;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.WithNameComparable;
 import org.estatio.dom.WithReferenceUnique;
 import org.estatio.dom.agreement.AgreementRole;
@@ -85,7 +82,7 @@ import org.estatio.dom.communicationchannel.CommunicationChannelOwner;
 @Bookmarkable
 @Immutable
 public abstract class Party
-        extends EstatioDomainObject<Party>
+        extends UdoDomainObject<Party>
         implements WithNameComparable<Party>, WithReferenceUnique, CommunicationChannelOwner, AgreementRoleHolder {
 
     public Party() {

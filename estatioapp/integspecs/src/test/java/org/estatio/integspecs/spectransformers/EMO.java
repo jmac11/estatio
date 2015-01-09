@@ -18,7 +18,7 @@ package org.estatio.integspecs.spectransformers;
 
 import org.apache.isis.core.specsupport.scenarios.ScenarioExecution;
 
-import org.estatio.dom.EstatioDomainObject;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.lease.Leases;
 import org.estatio.dom.party.Parties;
 

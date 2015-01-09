@@ -32,7 +32,7 @@ import org.apache.isis.applib.annotation.Immutable;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Title;
 
-import org.estatio.dom.EstatioDomainObject;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.WithTitleComparable;
 
@@ -60,7 +60,7 @@ import org.estatio.dom.WithTitleComparable;
 })
 @Immutable
 @Bounded
-public class AgreementRoleType extends EstatioDomainObject<AgreementRoleType>
+public class AgreementRoleType extends UdoDomainObject<AgreementRoleType>
         implements WithTitleComparable<AgreementRoleType> {
 
     public AgreementRoleType() {

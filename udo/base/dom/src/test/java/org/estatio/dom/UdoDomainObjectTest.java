@@ -28,8 +28,9 @@ import org.estatio.services.clock.ClockService;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class EstatioDomainObjectTest {
-    public static class InjectClockService extends EstatioDomainObjectTest {
+public class UdoDomainObjectTest {
+
+    public static class InjectClockService extends UdoDomainObjectTest {
 
         @Rule
         public JUnitRuleMockery2 context = JUnitRuleMockery2.createFor(Mode.INTERFACES_AND_CLASSES);
@@ -52,7 +53,7 @@ public class EstatioDomainObjectTest {
         }
     }
 
-    public static class ToString extends EstatioDomainObjectTest {
+    public static class ToString extends UdoDomainObjectTest {
 
         public static class WithCodeGetterImpl implements WithCodeGetter {
 

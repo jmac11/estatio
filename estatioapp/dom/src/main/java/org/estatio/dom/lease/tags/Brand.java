@@ -30,7 +30,7 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.Title;
 
-import org.estatio.dom.EstatioDomainObject;
+import org.estatio.dom.UdoDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.WithNameComparable;
 import org.estatio.dom.WithNameUnique;
@@ -64,7 +64,7 @@ import org.estatio.dom.tax.TaxRate;
 @AutoComplete(repository = Brands.class, action = "autoComplete")
 @Immutable
 public class Brand
-        extends EstatioDomainObject<Brand>
+        extends UdoDomainObject<Brand>
         implements WithNameUnique, WithNameComparable<Brand> {
 
     public Brand() {

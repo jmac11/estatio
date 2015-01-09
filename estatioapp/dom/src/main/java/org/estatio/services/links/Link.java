@@ -20,13 +20,11 @@
 package org.estatio.services.links;
 
 import javax.jdo.annotations.IdentityType;
-
 import org.apache.isis.applib.annotation.MemberGroupLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Title;
-
-import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
+import org.estatio.dom.UdoDomainObject;
 
 @javax.jdo.annotations.PersistenceCapable(
         identityType = IdentityType.DATASTORE,
@@ -40,7 +38,7 @@ import org.estatio.dom.JdoColumnLength;
 })
 @javax.jdo.annotations.Unique(members={"className","name"}) 
 @MemberGroupLayout(columnSpans={12,0,0,12})
-public class Link extends EstatioDomainObject<Link>{
+public class Link extends UdoDomainObject<Link> {
 
     public Link() {
         super("name");
