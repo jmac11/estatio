@@ -9,7 +9,7 @@
             "relationshipFromTitle": {},
             "to": {},
             "relationshipToTitle": {},
-            "relationshipType":  {},
+            "relationshipType": {},
             "startDate": {},
             "endDate": {},
             "description": {}
@@ -19,6 +19,14 @@
           "members": {
             "emailAddresses": {},
             "phoneNumbers": {}
+          }
+        },
+        "Application Level": {
+          "members": {
+            "applicationTenancy": {
+              "hidden": {"where": "ALL_TABLES"},
+              "disabled": {}
+            }
           }
         }
       }

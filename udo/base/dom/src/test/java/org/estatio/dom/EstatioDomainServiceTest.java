@@ -19,6 +19,7 @@
 package org.estatio.dom;
 
 import java.util.List;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.junit.Before;
 import org.junit.Test;
 import org.apache.isis.applib.annotation.Hidden;
@@ -39,9 +40,13 @@ public class EstatioDomainServiceTest {
             public SomeDomainObject() {
                 super(null);
             }
+            @Override
+            public ApplicationTenancy getApplicationTenancy() {
+                return null;
+            }
         }
 
-        static class SomeDomainService extends EstatioDomainService<SomeDomainObject> {
+        static class SomeDomainService extends UdoDomainService<SomeDomainObject> {
             Class<?> entityType;
 
             private String queryName;
@@ -151,9 +156,13 @@ public class EstatioDomainServiceTest {
             public SomeDomainObject() {
                 super(null);
             }
+            @Override
+            public ApplicationTenancy getApplicationTenancy() {
+                return null;
+            }
         }
 
-        static class SomeDomainService extends EstatioDomainService<SomeDomainObject> {
+        static class SomeDomainService extends UdoDomainService<SomeDomainObject> {
             protected SomeDomainService() {
                 super(SomeDomainService.class, SomeDomainObject.class);
             }
@@ -190,9 +199,13 @@ public class EstatioDomainServiceTest {
             public SomeDomainObject() {
                 super(null);
             }
+            @Override
+            public ApplicationTenancy getApplicationTenancy() {
+                return null;
+            }
         }
 
-        static class SomeDomainService extends EstatioDomainService<SomeDomainObject> {
+        static class SomeDomainService extends UdoDomainService<SomeDomainObject> {
             Class<?> entityType;
 
             protected SomeDomainService() {

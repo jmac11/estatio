@@ -31,7 +31,7 @@ import org.apache.isis.applib.annotation.NotContributed;
 import org.apache.isis.applib.annotation.NotInServiceMenu;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.Programmatic;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.asset.FixedAsset;
 import org.estatio.dom.currency.Currency;
 import org.estatio.dom.lease.Lease;
@@ -46,7 +46,7 @@ import org.estatio.services.settings.EstatioSettingsService;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "50.4"
 )
-public class Invoices extends EstatioDomainService<Invoice> {
+public class Invoices extends UdoDomainService<Invoice> {
 
     public Invoices() {
         super(Invoices.class, Invoice.class);

@@ -29,7 +29,7 @@ import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.RegEx;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.utils.StringUtils;
 
@@ -39,7 +39,7 @@ import org.estatio.dom.utils.StringUtils;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "10.2"
 )
-public class Units extends EstatioDomainService<Unit> {
+public class Units extends UdoDomainService<Unit> {
 
     public Units() {
         super(Units.class, Unit.class);

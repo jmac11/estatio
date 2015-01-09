@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.RegEx;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.RegexValidation;
 
 @DomainService(repositoryFor = LeaseType.class)
@@ -37,7 +37,7 @@ import org.estatio.dom.RegexValidation;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "80.1"
 )
-public class LeaseTypes extends EstatioDomainService<LeaseType> {
+public class LeaseTypes extends UdoDomainService<LeaseType> {
 
     public LeaseTypes() {
         super(LeaseTypes.class, LeaseType.class);

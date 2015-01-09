@@ -36,7 +36,7 @@ import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
 
 import org.estatio.dom.Chained;
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.WithStartDate;
 import org.estatio.dom.utils.MathUtils;
 
@@ -64,7 +64,7 @@ import org.estatio.dom.utils.MathUtils;
 })
 @Immutable
 public class IndexBase 
-        extends UdoDomainObject<IndexBase>
+        extends EstatioDomainObject<IndexBase>
         implements WithStartDate, Chained<IndexBase> {
 
     public static final int FACTOR_SCALE = 4;

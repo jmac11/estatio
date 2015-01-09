@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.Immutable;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Title;
 
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.PowerType;
 import org.estatio.dom.WithTitleComparable;
@@ -53,7 +53,7 @@ import org.estatio.dom.utils.ClassUtils;
 @Immutable
 @Bounded
 public class FixedAssetRegistrationType 
-        extends UdoDomainObject<FixedAssetRegistrationType>
+        extends EstatioDomainObject<FixedAssetRegistrationType>
         implements WithTitleComparable<FixedAssetRegistrationType>, 
                    WithTitleUnique, PowerType<FixedAssetRegistration> {
 

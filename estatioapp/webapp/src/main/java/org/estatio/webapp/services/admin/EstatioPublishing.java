@@ -29,7 +29,7 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.Prototype;
 import org.apache.isis.applib.services.clock.ClockService;
-import org.estatio.dom.EstatioService;
+import org.estatio.dom.UdoService;
 
 @DomainService
 @DomainServiceLayout(
@@ -37,7 +37,7 @@ import org.estatio.dom.EstatioService;
         menuBar = DomainServiceLayout.MenuBar.SECONDARY,
         menuOrder = "20.3"
 )
-public class EstatioPublishing extends EstatioService<EstatioPublishing> {
+public class EstatioPublishing extends UdoService<EstatioPublishing> {
 
     public EstatioPublishing() {
         super(EstatioPublishing.class);

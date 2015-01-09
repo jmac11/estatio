@@ -39,7 +39,7 @@ import org.apache.isis.applib.annotation.NotContributed;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.RegEx;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.agreement.AgreementRoleCommunicationChannelTypes;
 import org.estatio.dom.agreement.AgreementRoleType;
@@ -60,7 +60,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "40.1"
 )
-public class Leases extends EstatioDomainService<Lease> {
+public class Leases extends UdoDomainService<Lease> {
 
     public Leases() {
         super(Leases.class, Lease.class);

@@ -33,13 +33,13 @@ import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Render;
 import org.apache.isis.applib.annotation.Render.Type;
 
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.asset.Unit;
 import org.estatio.dom.valuetypes.LocalDateInterval;
 
 @DomainService(menuOrder = "40", repositoryFor = Occupancy.class)
 @Hidden
-public class Occupancies extends EstatioDomainService<Occupancy> {
+public class Occupancies extends UdoDomainService<Occupancy> {
 
     public Occupancies() {
         super(Occupancies.class, Occupancy.class);

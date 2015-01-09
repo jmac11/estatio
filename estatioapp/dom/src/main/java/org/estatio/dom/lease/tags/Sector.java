@@ -29,7 +29,7 @@ import org.apache.isis.applib.annotation.Bounded;
 import org.apache.isis.applib.annotation.Immutable;
 import org.apache.isis.applib.annotation.Title;
 
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.WithNameComparable;
 import org.estatio.dom.WithNameUnique;
@@ -57,7 +57,7 @@ import org.estatio.dom.WithNameUnique;
 @Bounded
 @Immutable
 public class Sector
-        extends UdoDomainObject<Sector>
+        extends EstatioDomainObject<Sector>
         implements WithNameUnique, WithNameComparable<Sector> {
 
     public Sector() {

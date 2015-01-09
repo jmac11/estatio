@@ -19,8 +19,6 @@
 package org.estatio.dom;
 
 import javax.jdo.JDOHelper;
-import javax.jdo.annotations.InheritanceStrategy;
-import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.isisaddons.module.security.dom.tenancy.WithApplicationTenancy;
 import org.apache.isis.applib.AbstractDomainObject;
 import org.apache.isis.applib.annotation.Hidden;
@@ -42,7 +40,7 @@ import org.estatio.services.clock.ClockService;
  * @javax.jdo.annotations.Version(
  *     strategy=VersionStrategy.VERSION_NUMBER,
  *     column="version")
- * public class MyDomainObject extends UdoDomainObject {
+ * public class MyDomainObject extends EstatioDomainObject {
  *   ...
  * }
  * </pre>
@@ -54,8 +52,6 @@ import org.estatio.services.clock.ClockService;
  * will end up putting a <tt>version</tt> column in both tables, and they are not
  * kept in sync).
  */
-@javax.jdo.annotations.PersistenceCapable
-@javax.jdo.annotations.Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class UdoDomainObject<T extends UdoDomainObject<T>>
         extends AbstractDomainObject 
         implements Comparable<T>, WithApplicationTenancy {
@@ -104,18 +100,7 @@ public abstract class UdoDomainObject<T extends UdoDomainObject<T>>
 
 
     // //////////////////////////////////////
-    private ApplicationTenancy applicationTenancy;
 
-    @javax.jdo.annotations.Column(allowsNull="true")
-    public ApplicationTenancy getApplicationTenancy() {
-        return applicationTenancy;
-    }
-
-    public void setApplicationTenancy(final ApplicationTenancy applicationTenancy) {
-        this.applicationTenancy = applicationTenancy;
-    }
-
-    // //////////////////////////////////////
 
     private ClockService clockService;
     protected ClockService getClockService() {
@@ -133,15 +118,10 @@ public abstract class UdoDomainObject<T extends UdoDomainObject<T>>
     protected EventBusService getEventBusService() {
         return eventBusService;
     }
-    /**
-     * Unlike domain services, domain objects are NOT automatically registered
-     * with the {@link EventBusService}; Isis makes no guarantees as to whether
-     * a subscribing domain object is in memory or not to receive the event.
-     */
     public final void injectEventBusService(final EventBusService eventBusService) {
         this.eventBusService = eventBusService;
     }
-    
+
     // //////////////////////////////////////
 
     @Override

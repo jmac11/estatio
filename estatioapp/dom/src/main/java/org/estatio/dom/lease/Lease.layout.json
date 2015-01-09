@@ -50,6 +50,14 @@
               }
             }
           }
+        },
+        "Application Level": {
+          "members": {
+            "applicationTenancy": {
+              "hidden": {"where": "ALL_TABLES"},
+              "disabled": {}
+            }
+          }
         }
       }
     },
@@ -59,15 +67,18 @@
         "Dates": {
           "members": {
             "startDate": {
-            "labelAt":{"value":"TOP" }},
-            "endDate": {"labelAt":{"value":"TOP" },
+              "labelAt": {"value": "TOP"}
+            },
+            "endDate": {
+              "labelAt": {"value": "TOP"},
               "actions": {
                 "changeDates": {}
               }
             },
-            "tenancyStartDate": {"labelAt":{"value":"TOP" }},
-            "tenancyEndDate": {"labelAt":{"value":"TOP" }},
-            "tenancyDuration": {"labelAt":{"value":"TOP" },
+            "tenancyStartDate": {"labelAt": {"value": "TOP"}},
+            "tenancyEndDate": {"labelAt": {"value": "TOP"}},
+            "tenancyDuration": {
+              "labelAt": {"value": "TOP"},
               "actions": {
                 "changeTenancyDates": {}
               }

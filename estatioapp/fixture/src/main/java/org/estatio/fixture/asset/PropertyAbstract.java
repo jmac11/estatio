@@ -18,16 +18,10 @@
  */
 package org.estatio.fixture.asset;
 
-import static org.estatio.integtests.VT.ld;
-
 import java.math.BigDecimal;
-
 import javax.inject.Inject;
-
-import org.joda.time.LocalDate;
-
 import org.isisaddons.wicket.gmap3.cpt.applib.Location;
-
+import org.joda.time.LocalDate;
 import org.estatio.dom.asset.FixedAssetRoleType;
 import org.estatio.dom.asset.Properties;
 import org.estatio.dom.asset.Property;
@@ -40,6 +34,8 @@ import org.estatio.dom.party.Parties;
 import org.estatio.dom.party.Party;
 import org.estatio.fixture.EstatioFixtureScript;
 
+import static org.estatio.integtests.VT.ld;
+
 /**
  * Sets up the {@link org.estatio.dom.asset.Property} and also a number of
  * {@link org.estatio.dom.asset.Unit}s.
@@ -47,16 +43,16 @@ import org.estatio.fixture.EstatioFixtureScript;
 public abstract class PropertyAbstract extends EstatioFixtureScript {
 
     protected Property createPropertyAndUnits(
-            final String reference, 
-            final String name, 
-            final String city, 
-            final Country country, 
-            final PropertyType type, 
-            final int numberOfUnits, 
-            final LocalDate openingDate, 
-            final LocalDate acquireDate, 
-            final Party owner, 
-            final Party manager, 
+            final String reference,
+            final String name,
+            final String city,
+            final Country country,
+            final PropertyType type,
+            final int numberOfUnits,
+            final LocalDate openingDate,
+            final LocalDate acquireDate,
+            final Party owner,
+            final Party manager,
             final String locationStr,
             final ExecutionContext fixtureResults) {
         Property property = properties.newProperty(reference, name, type, city, country, acquireDate);

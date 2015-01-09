@@ -13,7 +13,7 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.ParameterLayout;
 
-import org.estatio.dom.EstatioService;
+import org.estatio.dom.UdoService;
 import org.estatio.dom.asset.Property;
 import org.estatio.dom.invoice.viewmodel.InvoiceSummariesForInvoiceRun;
 import org.estatio.dom.lease.Lease;
@@ -24,7 +24,7 @@ import org.estatio.dom.lease.Leases;
         named = "Invoices",
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "50.5")
-public class InvoiceService extends EstatioService<InvoiceService> {
+public class InvoiceService extends UdoService<InvoiceService> {
 
     public InvoiceService() {
         super(InvoiceService.class);

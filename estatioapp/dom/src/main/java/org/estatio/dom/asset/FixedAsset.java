@@ -39,7 +39,7 @@ import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.RegexValidation;
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.WithNameComparable;
 import org.estatio.dom.WithReferenceUnique;
 import org.estatio.dom.communicationchannel.CommunicationChannelOwner;
@@ -76,7 +76,7 @@ import org.estatio.dom.party.Party;
 @Immutable
 @AutoComplete(repository = FixedAssets.class, action = "autoComplete")
 public abstract class FixedAsset
-        extends UdoDomainObject<FixedAsset>
+        extends EstatioDomainObject<FixedAsset>
         implements WithNameComparable<FixedAsset>, WithReferenceUnique, CommunicationChannelOwner {
 
     public FixedAsset() {

@@ -19,13 +19,18 @@
 package org.estatio.dom.asset;
 
 import java.util.List;
-
 import org.joda.time.LocalDate;
-
-import org.apache.isis.applib.annotation.*;
+import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
-
-import org.estatio.dom.EstatioDomainService;
+import org.apache.isis.applib.annotation.DomainService;
+import org.apache.isis.applib.annotation.DomainServiceLayout;
+import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.MemberOrder;
+import org.apache.isis.applib.annotation.Named;
+import org.apache.isis.applib.annotation.Optional;
+import org.apache.isis.applib.annotation.Programmatic;
+import org.apache.isis.applib.annotation.RegEx;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.geography.Country;
 import org.estatio.dom.utils.StringUtils;
@@ -36,7 +41,7 @@ import org.estatio.dom.utils.StringUtils;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "10.1"
 )
-public class Properties extends EstatioDomainService<Property> {
+public class Properties extends UdoDomainService<Property> {
 
     public Properties() {
         super(Properties.class, Property.class);

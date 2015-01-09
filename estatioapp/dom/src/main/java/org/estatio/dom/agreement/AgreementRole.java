@@ -46,7 +46,7 @@ import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 import org.estatio.dom.JdoColumnLength;
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.WithIntervalContiguous;
 import org.estatio.dom.communicationchannel.CommunicationChannel;
 import org.estatio.dom.communicationchannel.CommunicationChannelContributions;
@@ -98,7 +98,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
         members = { "agreement", "party", "type", "startDate" })
 @Bookmarkable(BookmarkPolicy.AS_CHILD)
 @Immutable
-public class AgreementRole extends UdoDomainObject<AgreementRole>
+public class AgreementRole extends EstatioDomainObject<AgreementRole>
         implements WithIntervalContiguous<AgreementRole> {
 
     private final WithIntervalContiguous.Helper<AgreementRole> helper =

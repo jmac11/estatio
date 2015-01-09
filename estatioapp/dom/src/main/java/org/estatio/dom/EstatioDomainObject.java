@@ -19,10 +19,11 @@
 package org.estatio.dom;
 
 import javax.jdo.JDOHelper;
-
-import org.apache.isis.applib.annotation.Hidden;
-
+import javax.jdo.annotations.InheritanceStrategy;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancies;
 import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
+import org.apache.isis.applib.annotation.Hidden;
+import org.apache.isis.applib.annotation.PropertyLayout;
 
 /**
  * A domain object that is mutable and can be changed by multiple users over
@@ -50,15 +51,23 @@ import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
  * will end up putting a <tt>version</tt> column in both tables, and they are
  * not kept in sync).
  */
-// @javax.jdo.annotations.PersistenceCapable
-// @javax.jdo.annotations.Inheritance(strategy =
-// InheritanceStrategy.SUBCLASS_TABLE)
+@javax.jdo.annotations.PersistenceCapable
+@javax.jdo.annotations.Inheritance(strategy = InheritanceStrategy.SUBCLASS_TABLE)
 public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
-        extends UdoDomainObject<T> /* implements WithApplicationTenancy */{
+        extends UdoDomainObject<T> {
+
+    public static final String ROOT_APPLICATION_TENANCY_PATH = "/";
 
     public EstatioDomainObject(
             final String keyProperties) {
         super(keyProperties);
+    }
+
+    /**
+     * Callback when object is created (using {@link org.apache.isis.applib.DomainObjectContainer#newTransientInstance(Class)}).
+     */
+    public void created() {
+        setApplicationTenancyPath(ROOT_APPLICATION_TENANCY_PATH);
     }
 
     @Hidden
@@ -74,17 +83,28 @@ public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
 
     // //////////////////////////////////////
 
-    private ApplicationTenancy applicationTenancy;
+    private String applicationTenancyPath;
 
-    // @javax.jdo.annotations.Column(allowsNull="true", name =
-    // "applicationTenancyPath")
+    @javax.jdo.annotations.Column(
+            length = ApplicationTenancy.MAX_LENGTH_PATH,
+            allowsNull = "true", // for now
+            name="atPath"
+    )
     @Hidden
-    public ApplicationTenancy getApplicationTenancy() {
-        return applicationTenancy;
+    public String getApplicationTenancyPath() {
+        return applicationTenancyPath;
     }
 
-    public void setApplicationTenancy(final ApplicationTenancy applicationTenancy) {
-        this.applicationTenancy = applicationTenancy;
+    public void setApplicationTenancyPath(final String applicationTenancyPath) {
+        this.applicationTenancyPath = applicationTenancyPath;
+    }
+
+    @PropertyLayout(
+            named = "Application Level",
+            describedAs = "Determines those users for whom this object is available to view and/or modify."
+    )
+    public ApplicationTenancy getApplicationTenancy() {
+        return applicationTenancies.findTenancyByPath(getApplicationTenancyPath());
     }
 
     // //////////////////////////////////////
@@ -94,5 +114,11 @@ public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
         final Long version = (Long) JDOHelper.getVersion(this);
         return version;
     }
+
+    // //////////////////////////////////////
+
+    @javax.inject.Inject
+    ApplicationTenancies applicationTenancies;
+
 
 }

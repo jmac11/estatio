@@ -32,7 +32,7 @@ import org.apache.isis.applib.annotation.Render;
 import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
 
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.WithReferenceComparable;
@@ -59,7 +59,7 @@ import org.estatio.dom.WithReferenceUnique;
 @Immutable
 @Bounded
 public class ChargeGroup
-        extends UdoDomainObject<ChargeGroup>
+        extends EstatioDomainObject<ChargeGroup>
         implements WithReferenceComparable<ChargeGroup>, WithReferenceUnique {
 
     public ChargeGroup() {

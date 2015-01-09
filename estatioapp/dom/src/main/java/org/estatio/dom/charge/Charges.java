@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.NotContributed;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.RegEx;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.tax.Tax;
 
@@ -38,7 +38,7 @@ import org.estatio.dom.tax.Tax;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "80.3"
 )
-public class Charges extends EstatioDomainService<Charge> {
+public class Charges extends UdoDomainService<Charge> {
 
     public Charges() {
         super(Charges.class, Charge.class);

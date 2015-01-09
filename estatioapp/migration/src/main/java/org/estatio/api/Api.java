@@ -18,10 +18,13 @@ package org.estatio.api;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 import javax.inject.Inject;
-
 import org.apache.commons.lang3.ObjectUtils;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancies;
+import org.joda.time.LocalDate;
+import org.joda.time.Period;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.isis.applib.AbstractFactoryAndRepository;
 import org.apache.isis.applib.ApplicationException;
 import org.apache.isis.applib.annotation.ActionSemantics;
@@ -113,10 +116,6 @@ import org.estatio.dom.tax.Taxes;
 import org.estatio.dom.utils.JodaPeriodUtils;
 import org.estatio.dom.utils.StringUtils;
 import org.estatio.services.clock.ClockService;
-import org.joda.time.LocalDate;
-import org.joda.time.Period;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Hidden
 public class Api extends AbstractFactoryAndRepository {
@@ -335,6 +334,7 @@ public class Api extends AbstractFactoryAndRepository {
         }
         return property;
     }
+
 
     // //////////////////////////////////////
 
@@ -1179,4 +1179,7 @@ public class Api extends AbstractFactoryAndRepository {
     @Inject
     private PartyRelationships partyRelationships;
 
-}
+    @Inject
+    private ApplicationTenancies applicationTenancies;
+
+ }

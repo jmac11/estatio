@@ -31,7 +31,7 @@ import org.apache.isis.applib.annotation.Immutable;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.Title;
 
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.JdoColumnLength;
 
 @javax.jdo.annotations.PersistenceCapable(identityType=IdentityType.DATASTORE)
@@ -58,7 +58,7 @@ import org.estatio.dom.JdoColumnLength;
 @Immutable
 @Bounded
 public class AgreementRoleCommunicationChannelType 
-        extends UdoDomainObject<AgreementRoleCommunicationChannelType> {
+        extends EstatioDomainObject<AgreementRoleCommunicationChannelType> {
 
     public AgreementRoleCommunicationChannelType() {
         super("title");

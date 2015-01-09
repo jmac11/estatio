@@ -35,7 +35,7 @@ import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 import org.estatio.dom.Chained;
 import org.estatio.dom.JdoColumnLength;
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.WithIntervalMutable;
 import org.estatio.dom.valuetypes.LocalDateInterval;
 
@@ -69,7 +69,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
 })
 @Immutable
 public class TaxRate
-        extends UdoDomainObject<TaxRate>
+        extends EstatioDomainObject<TaxRate>
         implements Chained<TaxRate>, WithIntervalMutable<TaxRate> {
 
     public TaxRate() {

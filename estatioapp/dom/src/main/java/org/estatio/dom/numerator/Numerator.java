@@ -30,7 +30,7 @@ import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.services.bookmark.Bookmark;
 import org.apache.isis.applib.services.bookmark.BookmarkHolder;
 import org.estatio.dom.JdoColumnLength;
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 
 /**
  * Generates a sequence of values (eg <tt>XYZ-00101</tt>, <tt>XYZ-00102</tt>,
@@ -71,7 +71,7 @@ import org.estatio.dom.UdoDomainObject;
 })
 @Immutable
 public class Numerator
-        extends UdoDomainObject<Numerator>
+        extends EstatioDomainObject<Numerator>
         implements Comparable<Numerator>, BookmarkHolder {
 
     public Numerator() {

@@ -19,6 +19,7 @@
 package org.estatio.dom.asset;
 
 import java.util.List;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.Expectations;
 import org.jmock.auto.Mock;
 import org.junit.Before;

@@ -12,7 +12,7 @@
             "status": {}
           }
         },
-         "Dates": {
+        "Dates": {
           "members": {
             "startDate": {},
             "endDate": {
@@ -21,6 +21,14 @@
               }
             },
             "current": {}
+          }
+        },
+        "Application Level": {
+          "members": {
+            "applicationTenancy": {
+              "hidden": {"where": "ALL_TABLES"},
+              "disabled": {}
+            }
           }
         }
       }
@@ -39,7 +47,7 @@
             "effectiveDate": {},
             "indexationPercentage": {},
             "levellingPercentage": {
-        	  "actions": {
+              "actions": {
                 "changeParameters": {}
               }
             }
@@ -58,7 +66,7 @@
               "actions": {
                 "changeValues": {}
               },
-            "effectiveValue": {}
+              "effectiveValue": {}
             }
           }
         },

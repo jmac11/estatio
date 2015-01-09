@@ -38,7 +38,7 @@ import org.apache.isis.applib.annotation.Render.Type;
 import org.apache.isis.applib.annotation.Title;
 import org.apache.isis.applib.annotation.Where;
 import org.estatio.dom.JdoColumnLength;
-import org.estatio.dom.UdoDomainObject;
+import org.estatio.dom.EstatioDomainObject;
 import org.estatio.dom.WithIntervalContiguous;
 import org.estatio.dom.party.Party;
 import org.estatio.dom.valuetypes.LocalDateInterval;
@@ -98,7 +98,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
 })
 @Bookmarkable(BookmarkPolicy.AS_CHILD)
 public class FixedAssetRole
-        extends UdoDomainObject<FixedAssetRole>
+        extends EstatioDomainObject<FixedAssetRole>
         implements WithIntervalContiguous<FixedAssetRole> {
 
     private WithIntervalContiguous.Helper<FixedAssetRole> helper =

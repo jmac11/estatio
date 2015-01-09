@@ -27,7 +27,7 @@ import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Programmatic;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.asset.Unit;
 import org.estatio.dom.invoice.Invoice;
 import org.estatio.dom.invoice.InvoiceStatus;
@@ -38,7 +38,7 @@ import org.estatio.dom.lease.LeaseTerm;
 import org.estatio.dom.valuetypes.LocalDateInterval;
 
 @DomainService(menuOrder = "50", repositoryFor = InvoiceItemForLease.class)
-public class InvoiceItemsForLease extends EstatioDomainService<InvoiceItemForLease> {
+public class InvoiceItemsForLease extends UdoDomainService<InvoiceItemForLease> {
 
     public InvoiceItemsForLease() {
         super(InvoiceItemsForLease.class, InvoiceItemForLease.class);

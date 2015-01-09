@@ -25,12 +25,12 @@ import org.apache.isis.applib.annotation.ActionSemantics;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.Hidden;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.communicationchannel.CommunicationChannel;
 
 @DomainService(menuOrder = "25", repositoryFor = AgreementRoleCommunicationChannel.class)
 @Hidden
-public class AgreementRoleCommunicationChannels extends EstatioDomainService<AgreementRoleCommunicationChannel> {
+public class AgreementRoleCommunicationChannels extends UdoDomainService<AgreementRoleCommunicationChannel> {
 
 
     public AgreementRoleCommunicationChannels() {

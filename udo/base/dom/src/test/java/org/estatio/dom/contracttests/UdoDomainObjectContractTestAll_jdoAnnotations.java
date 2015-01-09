@@ -18,14 +18,8 @@
  */
 package org.estatio.dom.contracttests;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.nullValue;
-import static org.junit.Assert.assertThat;
-
 import java.lang.annotation.Annotation;
 import java.util.Set;
-
 import javax.jdo.annotations.DatastoreIdentity;
 import javax.jdo.annotations.Discriminator;
 import javax.jdo.annotations.IdentityType;
@@ -33,18 +27,21 @@ import javax.jdo.annotations.Inheritance;
 import javax.jdo.annotations.InheritanceStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Version;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.reflections.Reflections;
-
 import org.estatio.dom.TitledEnum;
 import org.estatio.dom.UdoDomainObject;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.junit.Assert.assertThat;
 
 /**
  * Automatically tests all enums implementing {@link TitledEnum}.
  */
-public class EstatioDomainObjectContractTestAll_jdoAnnotations {
+public class UdoDomainObjectContractTestAll_jdoAnnotations {
 
     @SuppressWarnings("rawtypes")
     @Test

@@ -26,12 +26,12 @@ import org.apache.isis.applib.RepositoryException;
 import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.jdosupport.IsisJdoSupport;
 
-public abstract class EstatioDomainService<T> extends EstatioService<T> {
+public abstract class UdoDomainService<T> extends UdoService<T> {
 
     private final Class<T> entityType;
 
-    protected EstatioDomainService(
-            final Class<? extends EstatioDomainService<T>> serviceType, 
+    protected UdoDomainService(
+            final Class<? extends UdoDomainService<T>> serviceType,
             final Class<T> entityType) {
         super(serviceType);
         this.entityType = entityType;

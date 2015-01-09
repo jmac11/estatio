@@ -21,11 +21,11 @@ package org.estatio.dom.communicationchannel;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Programmatic;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 
 @DomainService(menuOrder = "70", repositoryFor = PhoneOrFaxNumber.class)
 @Hidden
-public class PhoneOrFaxNumbers extends EstatioDomainService<PhoneOrFaxNumber> {
+public class PhoneOrFaxNumbers extends UdoDomainService<PhoneOrFaxNumber> {
 
     public PhoneOrFaxNumbers() {
         super(PhoneOrFaxNumbers.class, PhoneOrFaxNumber.class);

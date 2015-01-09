@@ -18,6 +18,7 @@
  */
 package org.estatio.dom;
 
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 import org.jmock.auto.Mock;
 import org.junit.Rule;
 import org.junit.Test;
@@ -41,6 +42,10 @@ public class UdoDomainObjectTest {
         static class SomeDomainObject extends UdoDomainObject<SomeDomainObject> {
             public SomeDomainObject() {
                 super(null);
+            }
+            @Override
+            public ApplicationTenancy getApplicationTenancy() {
+                return null;
             }
         }
 
@@ -178,6 +183,11 @@ public class UdoDomainObjectTest {
 
             public void setWithTitle(final WithTitleGetter withTitle) {
                 this.withTitle = withTitle;
+            }
+
+            @Override
+            public ApplicationTenancy getApplicationTenancy() {
+                return null;
             }
         }
 

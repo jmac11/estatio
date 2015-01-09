@@ -21,11 +21,11 @@ package org.estatio.dom.communicationchannel;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Programmatic;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 
 @DomainService(menuOrder = "70", repositoryFor = EmailAddress.class)
 @Hidden
-public class EmailAddresses extends EstatioDomainService<EmailAddress> {
+public class EmailAddresses extends UdoDomainService<EmailAddress> {
 
     public EmailAddresses() {
         super(EmailAddresses.class, EmailAddress.class);

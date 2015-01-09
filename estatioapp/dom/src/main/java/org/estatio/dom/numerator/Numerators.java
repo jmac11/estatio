@@ -24,7 +24,7 @@ import org.apache.isis.applib.RecoverableException;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.services.bookmark.Bookmark;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 
 @DomainService(menuOrder = "80", repositoryFor = Numerator.class)
 @DomainServiceLayout(
@@ -32,7 +32,7 @@ import org.estatio.dom.EstatioDomainService;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "120.1"
 )
-public class Numerators extends EstatioDomainService<Numerator> {
+public class Numerators extends UdoDomainService<Numerator> {
 
     public Numerators() {
         super(Numerators.class, Numerator.class);

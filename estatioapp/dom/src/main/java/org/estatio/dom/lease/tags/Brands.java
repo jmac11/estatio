@@ -23,7 +23,7 @@ import javax.jdo.Query;
 import com.google.common.collect.Lists;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.utils.StringUtils;
 
 @DomainService(repositoryFor = Brand.class)
@@ -32,7 +32,7 @@ import org.estatio.dom.utils.StringUtils;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "80.9"
 )
-public class Brands extends EstatioDomainService<Brand> {
+public class Brands extends UdoDomainService<Brand> {
 
     public Brands() {
         super(Brands.class, Brand.class);

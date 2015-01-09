@@ -29,11 +29,11 @@ import org.apache.isis.applib.services.memento.MementoService;
 import org.estatio.dom.utils.StringExtensions;
 import org.estatio.services.clock.ClockService;
 
-public abstract class EstatioService<T> extends AbstractService {
+public abstract class UdoService<T> extends AbstractService {
 
-    private final Class<? extends EstatioService<T>> serviceType;
+    private final Class<? extends UdoService<T>> serviceType;
 
-    protected EstatioService(final Class<? extends EstatioService<T>> serviceType) {
+    protected UdoService(final Class<? extends UdoService<T>> serviceType) {
         this.serviceType = serviceType;
     }
     
@@ -50,7 +50,7 @@ public abstract class EstatioService<T> extends AbstractService {
 
     // //////////////////////////////////////
 
-    protected Class<? extends EstatioService<T>> getServiceType() {
+    protected Class<? extends UdoService<T>> getServiceType() {
         return serviceType;
     }
 

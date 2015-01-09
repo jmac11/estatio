@@ -18,25 +18,22 @@
  */
 package org.estatio.dom.contracttests;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
-
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Maps;
-
 import org.junit.Test;
 import org.reflections.Reflections;
-
 import org.estatio.dom.UdoDomainObject;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 
 /**
@@ -47,9 +44,9 @@ public class DomainServicesInjectionTestAll_inject{
     static class InjectorAndField {
         private Class<?> type;
         private Method m;
-        private EstatioDomainService<?> domainService;
+        private UdoDomainService<?> domainService;
         private Field f;
-        public InjectorAndField(Class<?> type, Method m, EstatioDomainService<?> domainService ) {
+        public InjectorAndField(Class<?> type, Method m, UdoDomainService<?> domainService ) {
             this.type = type;
             this.m = m;
             this.domainService = domainService;
@@ -69,16 +66,16 @@ public class DomainServicesInjectionTestAll_inject{
     public void searchAndTest() {
         Reflections reflections = new Reflections(Constants.packagePrefix);
 
-        final Map<Class<? extends EstatioDomainService>, EstatioDomainService<?>> domainServices = Maps.newHashMap();
-        Set<Class<? extends EstatioDomainService>> subtypes = 
-                reflections.getSubTypesOf(EstatioDomainService.class);
-        for (Class<? extends EstatioDomainService> subtype : subtypes) {
+        final Map<Class<? extends UdoDomainService>, UdoDomainService<?>> domainServices = Maps.newHashMap();
+        Set<Class<? extends UdoDomainService>> subtypes =
+                reflections.getSubTypesOf(UdoDomainService.class);
+        for (Class<? extends UdoDomainService> subtype : subtypes) {
             if(subtype.isInterface() || subtype.isAnonymousClass() || subtype.isLocalClass() || subtype.isMemberClass()) {
                 // skip (probably a testing class)
                 continue;
             }
             if(!domainServices.containsKey(subtype)) {
-                EstatioDomainService dos;
+                UdoDomainService dos;
                 try {
                     dos = subtype.newInstance();
                     domainServices.put(subtype, dos);
@@ -88,7 +85,7 @@ public class DomainServicesInjectionTestAll_inject{
             }
         }
         
-        Set<Class<? extends UdoDomainObject>> domainObjectClasses = 
+        Set<Class<? extends UdoDomainObject>> domainObjectClasses =
                 reflections.getSubTypesOf(UdoDomainObject.class);
         for (final Class<? extends UdoDomainObject> subtype : domainObjectClasses) {
             if(subtype.isAnonymousClass() || subtype.isLocalClass() || subtype.isMemberClass()) {
@@ -117,7 +114,7 @@ public class DomainServicesInjectionTestAll_inject{
             }
             final Iterable<InjectorAndField> injectorAndFields = Iterables.transform(injectorMethods, new Function<Method, InjectorAndField>(){
                 public InjectorAndField apply(Method m) {
-                    final EstatioDomainService<?> ds = domainServices.get(m.getParameterTypes()[0]);
+                    final UdoDomainService<?> ds = domainServices.get(m.getParameterTypes()[0]);
                     return new InjectorAndField(subtype, m, ds);
                 }
             } );

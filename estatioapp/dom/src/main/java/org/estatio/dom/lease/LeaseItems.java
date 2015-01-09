@@ -24,13 +24,13 @@ import com.google.common.collect.Iterables;
 import org.joda.time.LocalDate;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
-import org.estatio.dom.EstatioDomainService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.charge.Charge;
 import org.estatio.dom.invoice.PaymentMethod;
 
 @DomainService(menuOrder = "40", repositoryFor = LeaseItem.class)
 @Hidden
-public class LeaseItems extends EstatioDomainService<LeaseItem> {
+public class LeaseItems extends UdoDomainService<LeaseItem> {
 
     public LeaseItems() {
         super(LeaseItems.class, LeaseItem.class);
