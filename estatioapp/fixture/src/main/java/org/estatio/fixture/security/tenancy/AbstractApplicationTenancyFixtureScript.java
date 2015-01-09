@@ -24,11 +24,11 @@ import org.estatio.dom.valuetypes.Hierarchy;
 
 public abstract class AbstractApplicationTenancyFixtureScript extends FixtureScript {
 
+    static public String ONLY_IDENTIFIER = ".";
 
     protected ApplicationTenancy create(
             final String name,
             final String path,
-            final String countryReference,
             final ExecutionContext executionContext) {
 
         final Hierarchy node = Hierarchy.of(path);

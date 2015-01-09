@@ -16,17 +16,11 @@
  */
 package org.estatio.fixture.security.tenancy;
 
-import org.estatio.fixture.geography.refdata.CountriesAndStatesRefData;
+public class ApplicationTenancyForHelloWorldOxfOnly extends AbstractApplicationTenancyFixtureScript {
 
-public class ApplicationTenancyForNldKal extends AbstractApplicationTenancyFixtureScript {
-
-    public static final String TENANCY_NAME = "KAL (Netherlands)";
-    public static final String COUNTRY_REFERENCE = CountriesAndStatesRefData.NLD;
-    public static final String PATH = "/" + COUNTRY_REFERENCE + "/" + "KAL";
-
-    @Override
+     @Override
     protected void execute(ExecutionContext executionContext) {
-        create(TENANCY_NAME, PATH, COUNTRY_REFERENCE, executionContext);
+        create(ApplicationTenancyForHelloWorldOxf.TENANCY_NAME, ApplicationTenancyForHelloWorldOxf.PATH + AbstractApplicationTenancyFixtureScript.ONLY_IDENTIFIER, executionContext);
     }
 
 }

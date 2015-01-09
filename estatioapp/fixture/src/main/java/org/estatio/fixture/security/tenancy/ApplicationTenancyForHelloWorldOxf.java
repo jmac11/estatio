@@ -16,17 +16,14 @@
  */
 package org.estatio.fixture.security.tenancy;
 
-import org.estatio.fixture.geography.refdata.CountriesAndStatesRefData;
+public class ApplicationTenancyForHelloWorldOxf extends AbstractApplicationTenancyFixtureScript {
 
-public class ApplicationTenancyForSweHan extends AbstractApplicationTenancyFixtureScript {
-
-    public static final String TENANCY_NAME = "HAN (Sweden)";
-    public static final String COUNTRY_REFERENCE = CountriesAndStatesRefData.SWE;
-    public static final String PATH = "/" + COUNTRY_REFERENCE + "/" + "HAN";
+    public static final String TENANCY_NAME = "Hello World";
+    public static final String PATH = "/HEWO/OFX";
 
     @Override
     protected void execute(ExecutionContext executionContext) {
-        create(TENANCY_NAME, PATH, COUNTRY_REFERENCE, executionContext);
+        create(TENANCY_NAME, PATH, executionContext);
     }
 
 }
