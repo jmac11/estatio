@@ -83,12 +83,16 @@ public abstract class EstatioDomainObject<T extends UdoDomainObject<T>>
 
     // //////////////////////////////////////
 
-    private String applicationTenancyPath;
+    /**
+     * this default value will be overridden (in {@link #setApplicationTenancyPath(String)}) for
+     */
+    //
+    private String applicationTenancyPath = ROOT_APPLICATION_TENANCY_PATH;
 
     @javax.jdo.annotations.Column(
             length = ApplicationTenancy.MAX_LENGTH_PATH,
-            allowsNull = "true", // for now
-            name="atPath"
+            allowsNull = "false",
+            name = "atPath"
     )
     @Hidden
     public String getApplicationTenancyPath() {
