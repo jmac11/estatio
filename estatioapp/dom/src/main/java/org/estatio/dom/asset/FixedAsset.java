@@ -75,9 +75,9 @@ import org.estatio.dom.party.Party;
 @Bookmarkable
 @Immutable
 @AutoComplete(repository = FixedAssets.class, action = "autoComplete")
-public abstract class FixedAsset
-        extends EstatioDomainObject<FixedAsset>
-        implements WithNameComparable<FixedAsset>, WithReferenceUnique, CommunicationChannelOwner {
+public abstract class FixedAsset<X extends FixedAsset<X>>
+        extends EstatioDomainObject<X>
+        implements WithNameComparable<X>, WithReferenceUnique, CommunicationChannelOwner {
 
     public FixedAsset() {
         super("name");

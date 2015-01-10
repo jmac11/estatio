@@ -21,11 +21,11 @@ package org.estatio.dom.asset.registration;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Programmatic;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 
 @DomainService(menuOrder = "10", repositoryFor = FixedAssetRegistrationType.class)
 @Hidden
-public class FixedAssetRegistrationTypes extends UdoDomainService<FixedAssetRegistrationType> {
+public class FixedAssetRegistrationTypes extends UdoDomainRepositoryAndFactory<FixedAssetRegistrationType> {
 
     public FixedAssetRegistrationTypes() {
         super(FixedAssetRegistrationTypes.class, FixedAssetRegistrationType.class);

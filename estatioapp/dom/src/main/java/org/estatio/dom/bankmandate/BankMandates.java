@@ -32,7 +32,7 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.RegEx;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.agreement.AgreementRoleCommunicationChannelTypes;
 import org.estatio.dom.agreement.AgreementRoleType;
@@ -49,7 +49,7 @@ import org.joda.time.LocalDate;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "30.2"
 )
-public class BankMandates extends UdoDomainService<BankMandate> {
+public class BankMandates extends UdoDomainRepositoryAndFactory<BankMandate> {
 
     public BankMandates() {
         super(BankMandates.class, BankMandate.class);

@@ -25,12 +25,12 @@ import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.NotContributed;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.party.Party;
 
 @DomainService(menuOrder = "10", repositoryFor = FixedAssetRole.class)
 @Hidden
-public class FixedAssetRoles extends UdoDomainService<FixedAssetRole> {
+public class FixedAssetRoles extends UdoDomainRepositoryAndFactory<FixedAssetRole> {
 
     public FixedAssetRoles() {
         super(FixedAssetRoles.class, FixedAssetRole.class);

@@ -24,14 +24,14 @@ import org.isisaddons.module.excel.dom.ExcelService;
 import org.joda.time.LocalDate;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.NotContributed.As;
-import org.estatio.dom.UdoService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.asset.Property;
 import org.estatio.dom.lease.LeaseItemType;
 import org.estatio.dom.lease.LeaseTerms;
 
 @DomainService(menuOrder = "00")
 @Immutable
-public class LeaseTermForTurnoverRentService extends UdoService<LeaseTermForTurnoverRentService> {
+public class LeaseTermForTurnoverRentService extends UdoDomainService<LeaseTermForTurnoverRentService> {
 
     public LeaseTermForTurnoverRentService() {
         super(LeaseTermForTurnoverRentService.class);

@@ -9,8 +9,8 @@ import static org.hamcrest.CoreMatchers.nullValue;
 
 public class HierarchyTest {
 
-    static Hierarchy ih(String path) {
-        return new Hierarchy(path);
+    static Level ih(String path) {
+        return new Level(path);
     }
 
     public static class ParentOf_and_ChildOf extends HierarchyTest {
@@ -46,8 +46,8 @@ public class HierarchyTest {
 
         @Test
         public void sadCase_whenSameInstance() throws Exception {
-            final Hierarchy ih = ih("/");
-            final Hierarchy ih2 = ih("/a/bb");
+            final Level ih = ih("/");
+            final Level ih2 = ih("/a/bb");
 
             Assert.assertThat(ih.parentOf(ih), is(false));
             Assert.assertThat(ih2.parentOf(ih2), is(false));

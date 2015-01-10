@@ -21,7 +21,6 @@ package org.estatio.dom;
 import java.util.List;
 import javax.jdo.JDOHelper;
 import javax.jdo.annotations.InheritanceStrategy;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import org.isisaddons.module.security.dom.tenancy.ApplicationTenancies;
@@ -35,7 +34,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.ParameterLayout;
 import org.apache.isis.applib.annotation.PropertyLayout;
 import org.apache.isis.applib.services.eventbus.ActionInteractionEvent;
-import org.estatio.dom.valuetypes.Hierarchy;
+import org.estatio.dom.valuetypes.Level;
 
 /**
  * A domain object that is mutable and can be changed by multiple users over
@@ -131,8 +130,22 @@ public abstract class EstatioDomainObject<T extends EstatioDomainObject<T>>
         }
     }
 
+    public static class ApplicationTenancyMovedDownEvent extends ApplicationTenancyChangedEvent {
+        public ApplicationTenancyMovedDownEvent(final EstatioDomainObject source, final Identifier identifier, final Object... arguments) {
+            super(source, identifier, arguments);
+        }
+    }
+
+    public static class ApplicationTenancyMovedUpEvent extends ApplicationTenancyChangedEvent {
+        public ApplicationTenancyMovedUpEvent(final EstatioDomainObject source, final Identifier identifier, final Object... arguments) {
+            super(source, identifier, arguments);
+        }
+    }
+
+    // //////////////////////////////////////
+
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    @ActionInteraction(value = ApplicationTenancyChangedEvent.class)
+    @ActionInteraction(value = ApplicationTenancyMovedDownEvent.class)
     @ActionLayout(
             named = "Move down",
             cssClassFa = "fa-angle-double-down"
@@ -148,24 +161,18 @@ public abstract class EstatioDomainObject<T extends EstatioDomainObject<T>>
     public List<ApplicationTenancy> choices0MoveDownApplicationTenancy() {
         final List<ApplicationTenancy> all = applicationTenancies.allTenancies();
         final ApplicationTenancy current = getApplicationTenancy();
-        final Hierarchy currentLevel = Hierarchy.of(current.getPath());
-        return Lists.newArrayList(Iterables.filter(all, childrenOf(currentLevel)));
+        final Level currentLevel = Level.of(current.getPath());
+        return Lists.newArrayList(Iterables.filter(all, Level.Predicates.childrenOf(currentLevel)));
     }
 
-    private final Predicate<ApplicationTenancy> childrenOf(final Hierarchy level) {
-        return new Predicate<ApplicationTenancy>() {
-            @Override
-            public boolean apply(final ApplicationTenancy input) {
-                final Hierarchy candidate = Hierarchy.of(input.getPath());
-                return candidate.childOf(level);
-            }
-        };
+    public String disableMoveDownApplicationTenancy(final ApplicationTenancy applicationTenancy) {
+        return choices0MoveDownApplicationTenancy().isEmpty()? "No lower levels": null;
     }
-
 
     // //////////////////////////////////////
+
     @ActionSemantics(ActionSemantics.Of.IDEMPOTENT)
-    @ActionInteraction(value = ApplicationTenancyChangedEvent.class)
+    @ActionInteraction(value = ApplicationTenancyMovedUpEvent.class)
     @ActionLayout(
             named = "Move up",
             cssClassFa = "fa-angle-double-up"
@@ -181,18 +188,12 @@ public abstract class EstatioDomainObject<T extends EstatioDomainObject<T>>
     public List<ApplicationTenancy> choices0MoveUpApplicationTenancy() {
         final List<ApplicationTenancy> all = applicationTenancies.allTenancies();
         final ApplicationTenancy current = getApplicationTenancy();
-        final Hierarchy currentLevel = Hierarchy.of(current.getPath());
-        return Lists.newArrayList(Iterables.filter(all, parentsOf(currentLevel)));
+        final Level currentLevel = Level.of(current.getPath());
+        return Lists.newArrayList(Iterables.filter(all, Level.Predicates.parentsOf(currentLevel)));
     }
 
-    private final Predicate<ApplicationTenancy> parentsOf(final Hierarchy level) {
-        return new Predicate<ApplicationTenancy>() {
-            @Override
-            public boolean apply(final ApplicationTenancy input) {
-                final Hierarchy candidate = Hierarchy.of(input.getPath());
-                return candidate.parentOf(level);
-            }
-        };
+    public String disableMoveUpApplicationTenancy(final ApplicationTenancy applicationTenancy) {
+        return choices0MoveUpApplicationTenancy().isEmpty()? "No higher levels": null;
     }
 
 

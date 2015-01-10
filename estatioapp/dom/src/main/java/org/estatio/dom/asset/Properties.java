@@ -30,7 +30,7 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.RegEx;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.geography.Country;
 import org.estatio.dom.utils.StringUtils;
@@ -41,7 +41,7 @@ import org.estatio.dom.utils.StringUtils;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "10.1"
 )
-public class Properties extends UdoDomainService<Property> {
+public class Properties extends UdoDomainRepositoryAndFactory<Property> {
 
     public Properties() {
         super(Properties.class, Property.class);

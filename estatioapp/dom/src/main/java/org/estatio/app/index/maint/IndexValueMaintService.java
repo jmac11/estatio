@@ -29,7 +29,7 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.value.Blob;
-import org.estatio.dom.UdoService;
+import org.estatio.dom.UdoDomainService;
 
 
 @DomainService
@@ -38,7 +38,7 @@ import org.estatio.dom.UdoService;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "60.1"
 )
-public class IndexValueMaintService extends UdoService<IndexValueMaintService> {
+public class IndexValueMaintService extends UdoDomainService<IndexValueMaintService> {
 
     public IndexValueMaintService() {
         super(IndexValueMaintService.class);

@@ -30,7 +30,7 @@ import com.google.common.collect.Maps;
 import org.junit.Test;
 import org.reflections.Reflections;
 import org.estatio.dom.UdoDomainObject;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -44,9 +44,9 @@ public class DomainServicesInjectionTestAll_inject{
     static class InjectorAndField {
         private Class<?> type;
         private Method m;
-        private UdoDomainService<?> domainService;
+        private UdoDomainRepositoryAndFactory<?> domainService;
         private Field f;
-        public InjectorAndField(Class<?> type, Method m, UdoDomainService<?> domainService ) {
+        public InjectorAndField(Class<?> type, Method m, UdoDomainRepositoryAndFactory<?> domainService ) {
             this.type = type;
             this.m = m;
             this.domainService = domainService;
@@ -66,16 +66,16 @@ public class DomainServicesInjectionTestAll_inject{
     public void searchAndTest() {
         Reflections reflections = new Reflections(Constants.packagePrefix);
 
-        final Map<Class<? extends UdoDomainService>, UdoDomainService<?>> domainServices = Maps.newHashMap();
-        Set<Class<? extends UdoDomainService>> subtypes =
-                reflections.getSubTypesOf(UdoDomainService.class);
-        for (Class<? extends UdoDomainService> subtype : subtypes) {
+        final Map<Class<? extends UdoDomainRepositoryAndFactory>, UdoDomainRepositoryAndFactory<?>> domainServices = Maps.newHashMap();
+        Set<Class<? extends UdoDomainRepositoryAndFactory>> subtypes =
+                reflections.getSubTypesOf(UdoDomainRepositoryAndFactory.class);
+        for (Class<? extends UdoDomainRepositoryAndFactory> subtype : subtypes) {
             if(subtype.isInterface() || subtype.isAnonymousClass() || subtype.isLocalClass() || subtype.isMemberClass()) {
                 // skip (probably a testing class)
                 continue;
             }
             if(!domainServices.containsKey(subtype)) {
-                UdoDomainService dos;
+                UdoDomainRepositoryAndFactory dos;
                 try {
                     dos = subtype.newInstance();
                     domainServices.put(subtype, dos);
@@ -114,7 +114,7 @@ public class DomainServicesInjectionTestAll_inject{
             }
             final Iterable<InjectorAndField> injectorAndFields = Iterables.transform(injectorMethods, new Function<Method, InjectorAndField>(){
                 public InjectorAndField apply(Method m) {
-                    final UdoDomainService<?> ds = domainServices.get(m.getParameterTypes()[0]);
+                    final UdoDomainRepositoryAndFactory<?> ds = domainServices.get(m.getParameterTypes()[0]);
                     return new InjectorAndField(subtype, m, ds);
                 }
             } );

@@ -63,6 +63,11 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
         column = "version")
 @javax.jdo.annotations.Queries({
         @javax.jdo.annotations.Query(
+                name = "findByAgreement", language = "JDOQL",
+                value = "SELECT " +
+                        "FROM org.estatio.dom.agreement.AgreementRole "
+                        + "WHERE agreement == :agreement "),
+        @javax.jdo.annotations.Query(
                 name = "findByParty", language = "JDOQL",
                 value = "SELECT " +
                         "FROM org.estatio.dom.agreement.AgreementRole "

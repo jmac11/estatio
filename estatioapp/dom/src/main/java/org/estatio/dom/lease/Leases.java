@@ -39,7 +39,7 @@ import org.apache.isis.applib.annotation.NotContributed;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.RegEx;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.agreement.AgreementRoleCommunicationChannelTypes;
 import org.estatio.dom.agreement.AgreementRoleType;
@@ -60,7 +60,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "40.1"
 )
-public class Leases extends UdoDomainService<Lease> {
+public class Leases extends UdoDomainRepositoryAndFactory<Lease> {
 
     public Leases() {
         super(Leases.class, Lease.class);
@@ -246,9 +246,9 @@ public class Leases extends UdoDomainService<Lease> {
 
     @PostConstruct
     @Programmatic
-    public void init(Map<String, String> properties) {
+    public void init(final Map<String, String> properties) {
         super.init(properties);
-        AgreementType agreementType = agreementTypes.findOrCreate(LeaseConstants.AT_LEASE);
+        final AgreementType agreementType = agreementTypes.findOrCreate(LeaseConstants.AT_LEASE);
         agreementRoleTypes.findOrCreate(LeaseConstants.ART_TENANT, agreementType);
         agreementRoleTypes.findOrCreate(LeaseConstants.ART_LANDLORD, agreementType);
         agreementRoleTypes.findOrCreate(LeaseConstants.ART_MANAGER, agreementType);

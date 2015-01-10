@@ -23,7 +23,7 @@ import java.util.List;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
 
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.RegexValidation;
 
 @DomainService(repositoryFor = Person.class)
@@ -32,7 +32,7 @@ import org.estatio.dom.RegexValidation;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "20.3"
 )
-public class Persons extends UdoDomainService<Person> {
+public class Persons extends UdoDomainRepositoryAndFactory<Person> {
 
     public Persons() {
         super(Persons.class, Person.class);

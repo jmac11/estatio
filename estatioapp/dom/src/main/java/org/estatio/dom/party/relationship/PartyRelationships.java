@@ -20,7 +20,7 @@ import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.annotation.RegEx;
 import org.apache.isis.core.runtime.authentication.standard.RandomCodeGenerator10Chars;
 
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.RegexValidation;
 import org.estatio.dom.communicationchannel.CommunicationChannelType;
 import org.estatio.dom.communicationchannel.CommunicationChannels;
@@ -34,7 +34,7 @@ import org.estatio.dom.party.Persons;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "20.4")
 @DomainService(repositoryFor = PartyRelationship.class)
-public class PartyRelationships extends UdoDomainService<PartyRelationship> {
+public class PartyRelationships extends UdoDomainRepositoryAndFactory<PartyRelationship> {
 
     public PartyRelationships() {
         super(PartyRelationships.class, PartyRelationship.class);

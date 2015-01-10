@@ -25,11 +25,11 @@ import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.annotation.DomainService;
 import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Programmatic;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 
 @DomainService(menuOrder = "99", repositoryFor = Sector.class)
 @Hidden
-public class Sectors extends UdoDomainService<Sector> {
+public class Sectors extends UdoDomainRepositoryAndFactory<Sector> {
 
     public Sectors() {
         super(Sectors.class, Sector.class);

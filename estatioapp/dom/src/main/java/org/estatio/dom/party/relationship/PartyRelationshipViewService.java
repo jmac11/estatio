@@ -31,12 +31,12 @@ import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.NotContributed;
 import org.apache.isis.applib.annotation.NotContributed.As;
 
-import org.estatio.dom.UdoService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.party.Party;
 
 @DomainService()
 @Hidden
-public class PartyRelationshipViewService extends UdoService<PartyRelationshipViewService> {
+public class PartyRelationshipViewService extends UdoDomainService<PartyRelationshipViewService> {
 
     public PartyRelationshipViewService() {
         super(PartyRelationshipViewService.class);

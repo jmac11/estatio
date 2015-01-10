@@ -27,13 +27,13 @@ import org.joda.time.LocalDate;
 import org.apache.isis.applib.annotation.*;
 import org.apache.isis.applib.annotation.ActionSemantics.Of;
 
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.EstatioUserRoles;
 import org.estatio.dom.asset.Property;
 import org.estatio.dom.valuetypes.LocalDateInterval;
 
 @DomainService(menuOrder = "40", repositoryFor = LeaseTerm.class)
-public class LeaseTerms extends UdoDomainService<LeaseTerm> {
+public class LeaseTerms extends UdoDomainRepositoryAndFactory<LeaseTerm> {
 
     public LeaseTerms() {
         super(LeaseTerms.class, LeaseTerm.class);
@@ -58,7 +58,7 @@ public class LeaseTerms extends UdoDomainService<LeaseTerm> {
         // item is not updated. Removing code below will fail integration tests
         // too.
         getContainer().flush();
-        isisJdoSupport.refresh(leaseItem);
+        getIsisJdoSupport().refresh(leaseItem);
         return leaseTerm;
     }
 

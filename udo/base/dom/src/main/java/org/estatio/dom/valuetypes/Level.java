@@ -25,14 +25,15 @@ import com.google.common.base.Splitter;
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+import org.isisaddons.module.security.dom.tenancy.ApplicationTenancy;
 
-public final class Hierarchy implements Comparable<Hierarchy> {
+public final class Level implements Comparable<Level> {
 
-    public static Hierarchy of(final String path) {
-        return path != null ? new Hierarchy(path): null;
+    public static Level of(final String path) {
+        return path != null ? new Level(path): null;
     }
 
-    public Hierarchy(String path) {
+    public Level(String path) {
         this.path = path;
     }
 
@@ -47,28 +48,28 @@ public final class Hierarchy implements Comparable<Hierarchy> {
 
     //region > parentOf, childOf
 
-    public boolean parentOf(final Hierarchy other) {
+    public boolean parentOf(final Level other) {
         return other != null && contains(other, this);
     }
 
-    public boolean childOf(final Hierarchy other) {
+    public boolean childOf(final Level other) {
         return other != null && contains(this, other);
     }
 
-    private static boolean contains(Hierarchy parent, Hierarchy child) {
+    private static boolean contains(Level parent, Level child) {
         return parent.path.startsWith(child.path) && parent.path.length() > child.path.length();
     }
     //endregion
 
     //region > parent
-    public Hierarchy parent() {
+    public Level parent() {
         if(path.equals("/")) {
             return null;
         }
         final List<String> parts = getParts();
         final List<String> strings = parts.subList(0, parts.size() - 1);
         final String join = Joiner.on("/").join(strings);
-        return new Hierarchy("/" + join);
+        return new Level("/" + join);
     }
 
     /**
@@ -101,7 +102,7 @@ public final class Hierarchy implements Comparable<Hierarchy> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Hierarchy that = (Hierarchy) o;
+        Level that = (Level) o;
 
         return !(path != null ? !path.equals(that.path) : that.path != null);
 
@@ -115,7 +116,7 @@ public final class Hierarchy implements Comparable<Hierarchy> {
 
     //region > Comparable
     @Override
-    public int compareTo(Hierarchy o) {
+    public int compareTo(Level o) {
         return path.compareTo(o.path);
     }
     //endregion
@@ -124,6 +125,30 @@ public final class Hierarchy implements Comparable<Hierarchy> {
     @Override
     public String toString() {
         return path;
+    }
+
+    public static final class Predicates {
+        private Predicates(){}
+
+        public final static Predicate<ApplicationTenancy> childrenOf(final Level level) {
+            return new Predicate<ApplicationTenancy>() {
+                @Override
+                public boolean apply(final ApplicationTenancy input) {
+                    final Level candidate = of(input.getPath());
+                    return candidate.childOf(level);
+                }
+            };
+        }
+
+        public final static Predicate<ApplicationTenancy> parentsOf(final Level level) {
+            return new Predicate<ApplicationTenancy>() {
+                @Override
+                public boolean apply(final ApplicationTenancy input) {
+                    final Level candidate = of(input.getPath());
+                    return candidate.parentOf(level);
+                }
+            };
+        }
     }
 
 

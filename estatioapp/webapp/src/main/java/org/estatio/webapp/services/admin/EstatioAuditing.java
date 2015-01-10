@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Optional;
 import org.apache.isis.applib.services.clock.ClockService;
-import org.estatio.dom.UdoService;
+import org.estatio.dom.UdoDomainService;
 
 @DomainService
 @DomainServiceLayout(
@@ -36,7 +36,7 @@ import org.estatio.dom.UdoService;
         menuBar = DomainServiceLayout.MenuBar.SECONDARY,
         menuOrder = "20.2"
 )
-public class EstatioAuditing extends UdoService<EstatioAuditing> {
+public class EstatioAuditing extends UdoDomainService<EstatioAuditing> {
 
     public EstatioAuditing() {
         super(EstatioAuditing.class);

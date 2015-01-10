@@ -63,7 +63,7 @@ import org.estatio.dom.valuetypes.LocalDateInterval;
 @AutoComplete(repository = Units.class)
 @Bookmarkable(BookmarkPolicy.AS_CHILD)
 @Immutable
-public class Unit extends FixedAsset implements WithIntervalMutable<Unit> {
+public class Unit extends FixedAsset<Unit> implements WithIntervalMutable<Unit> {
 
     private UnitType type;
 

@@ -29,11 +29,11 @@ import org.apache.isis.applib.annotation.Hidden;
 import org.apache.isis.applib.annotation.Programmatic;
 import org.apache.isis.applib.query.QueryDefault;
 import org.apache.isis.applib.services.queryresultscache.QueryResultsCache;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 
 @DomainService(menuOrder = "99", repositoryFor = Link.class)
 @Hidden
-public class Links extends UdoDomainService<Link> {
+public class Links extends UdoDomainRepositoryAndFactory<Link> {
     
     /**
      * Cache link count (across sessions), so can quickly know whether any given class has any links for it.

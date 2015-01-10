@@ -61,7 +61,7 @@ import org.estatio.dom.party.Party;
 })
 @AutoComplete(repository = Properties.class)
 @Bookmarkable
-public class Property extends FixedAsset implements Locatable {
+public class Property extends FixedAsset<Property> implements Locatable {
 
     private String fullName;
 

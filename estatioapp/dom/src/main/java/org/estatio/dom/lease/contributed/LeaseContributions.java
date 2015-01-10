@@ -30,7 +30,7 @@ import org.apache.isis.applib.annotation.ActionSemantics.Of;
 import org.apache.isis.applib.annotation.NotContributed.As;
 import org.apache.isis.applib.annotation.Render.Type;
 
-import org.estatio.dom.UdoService;
+import org.estatio.dom.UdoDomainService;
 import org.estatio.dom.WithInterval;
 import org.estatio.dom.agreement.AgreementRole;
 import org.estatio.dom.agreement.AgreementRoleHolder;
@@ -52,7 +52,7 @@ import org.estatio.dom.lease.LeaseConstants;
  */
 @DomainService(menuOrder = "40")
 @Hidden
-public class LeaseContributions extends UdoService<LeaseContributions> {
+public class LeaseContributions extends UdoDomainService<LeaseContributions> {
 
     public LeaseContributions() {
         super(LeaseContributions.class);

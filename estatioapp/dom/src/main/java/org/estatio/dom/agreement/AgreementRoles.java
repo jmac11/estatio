@@ -32,13 +32,13 @@ import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.NotContributed;
 import org.apache.isis.applib.annotation.Programmatic;
 
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.party.Party;
 import org.estatio.dom.valuetypes.LocalDateInterval;
 
 @DomainService(menuOrder = "25", repositoryFor = AgreementRole.class)
 @Hidden
-public class AgreementRoles extends UdoDomainService<AgreementRole> {
+public class AgreementRoles extends UdoDomainRepositoryAndFactory<AgreementRole> {
 
     public AgreementRoles() {
         super(AgreementRoles.class, AgreementRole.class);
@@ -109,6 +109,15 @@ public class AgreementRoles extends UdoDomainService<AgreementRole> {
         return allMatches(
                 "findByParty",
                 "party", party);
+    }
+
+    // //////////////////////////////////////
+
+    @Programmatic
+    public List<AgreementRole> findByAgreement(final Agreement agreement) {
+        return allMatches(
+                "findByAgreement",
+                "agreement", agreement);
     }
 
     // //////////////////////////////////////

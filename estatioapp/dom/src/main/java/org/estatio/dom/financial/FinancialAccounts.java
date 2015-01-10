@@ -28,7 +28,7 @@ import org.apache.isis.applib.annotation.DomainServiceLayout;
 import org.apache.isis.applib.annotation.MemberOrder;
 import org.apache.isis.applib.annotation.Named;
 import org.apache.isis.applib.annotation.Programmatic;
-import org.estatio.dom.UdoDomainService;
+import org.estatio.dom.UdoDomainRepositoryAndFactory;
 import org.estatio.dom.party.Party;
 
 @DomainService(repositoryFor = FinancialAccount.class)
@@ -37,7 +37,7 @@ import org.estatio.dom.party.Party;
         menuBar = DomainServiceLayout.MenuBar.PRIMARY,
         menuOrder = "30.1"
 )
-public class FinancialAccounts extends UdoDomainService<FinancialAccount> {
+public class FinancialAccounts extends UdoDomainRepositoryAndFactory<FinancialAccount> {
 
     public FinancialAccounts() {
         super(FinancialAccounts.class, FinancialAccount.class);

@@ -46,7 +46,7 @@ public class EstatioDomainServiceTest {
             }
         }
 
-        static class SomeDomainService extends UdoDomainService<SomeDomainObject> {
+        static class SomeDomainService extends UdoDomainRepositoryAndFactory<SomeDomainObject> {
             Class<?> entityType;
 
             private String queryName;
@@ -162,7 +162,7 @@ public class EstatioDomainServiceTest {
             }
         }
 
-        static class SomeDomainService extends UdoDomainService<SomeDomainObject> {
+        static class SomeDomainService extends UdoDomainRepositoryAndFactory<SomeDomainObject> {
             protected SomeDomainService() {
                 super(SomeDomainService.class, SomeDomainObject.class);
             }
@@ -205,7 +205,7 @@ public class EstatioDomainServiceTest {
             }
         }
 
-        static class SomeDomainService extends UdoDomainService<SomeDomainObject> {
+        static class SomeDomainService extends UdoDomainRepositoryAndFactory<SomeDomainObject> {
             Class<?> entityType;
 
             protected SomeDomainService() {
